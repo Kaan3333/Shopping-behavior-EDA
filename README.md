@@ -5,8 +5,7 @@ Exploring customer shopping behavior in Istanbul to identify patterns in demogra
 ---
 
 ## 📊 Dataset Description
-- **Source:** place your CSV in `data/istanbul_sales_data.csv` (or add a public link here if available).  
-- **Typical shape:** ~3k rows × 7 columns (please replace with the actual numbers from your data).  
+- **Source:** [place your CSV in `data/istanbul_sales_data.csv` (or add a public link here if available)](https://www.kaggle.com/datasets/ardayavuzkeskin/istanbul-retail-trends-a-customer-behavior-dataset).   
 - **Key variables:**  
   - `Invoice ID` — Unique transaction identifier  
   - `Gender` — Male / Female  
