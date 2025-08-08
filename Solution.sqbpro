@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="Solution.db" readonly="0" foreign_keys="0" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="1268"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title="personen" custom_title="0" dock_id="1" table="4,8:mainpersonen"/><dock_state state="000000ff00000000fd0000000100000002000003b20000037dfc0100000001fb000000160064006f0063006b00420072006f00770073006500310100000000000003b20000012400ffffff000002580000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="personen" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="68"/><column index="2" value="77"/><column index="3" value="54"/><column index="4" value="39"/><column index="5" value="124"/><column index="6" value="55"/><column index="7" value="62"/><column index="8" value="106"/><column index="9" value="85"/><column index="10" value="140"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="avg-person*">SELECT
+    -- Numerische Durchschnittswerte
+    (SELECT AVG(age) FROM personen) AS avg_age,
+    (SELECT AVG(quantity) FROM personen) AS avg_quantity,
+    (SELECT AVG(price) FROM personen) AS avg_price,
+
+    -- Geschlechtsverteilung
+    (SELECT COUNT(*) FROM personen WHERE gender = 'Female') AS female_count,
+    (SELECT COUNT(*) FROM personen WHERE gender = 'Male') AS male_count,
+
+    -- Verteilung der Zahlungsmethoden
+    (SELECT COUNT(*) FROM personen WHERE payment_method = 'Credit Card') AS credit_card_count,
+    (SELECT COUNT(*) FROM personen WHERE payment_method = 'Cash') AS cash_count,
+    (SELECT COUNT(*) FROM personen WHERE payment_method = 'Debit Card') AS debit_card_count,
+
+    -- Verteilung der Produktkategorien
+    (SELECT COUNT(*) FROM personen WHERE category = 'Clothing') AS clothing_count,
+    (SELECT COUNT(*) FROM personen WHERE category = 'Technology') AS technology_count,
+    (SELECT COUNT(*) FROM personen WHERE category = 'Food &amp; Beverage') AS food_beverage_count,
+    (SELECT COUNT(*) FROM personen WHERE category = 'Shoes') AS shoes_count,
+    (SELECT COUNT(*) FROM personen WHERE category = 'Books') AS books_count,
+    (SELECT COUNT(*) FROM personen WHERE category = 'Cosmetics') AS cosmetics_count,
+    (SELECT COUNT(*) FROM personen WHERE category = 'Toys') AS toys_count,
+    (SELECT COUNT(*) FROM personen WHERE category = 'Souvenir') AS souvenir_count
+FROM
+    personen
+LIMIT 1;</sql><sql name="avg_male*">SELECT
+    -- Durchschnittswerte nur für Männer
+    (SELECT AVG(age) FROM personen WHERE gender = 'Male') AS avg_age_male,
+    (SELECT AVG(quantity) FROM personen WHERE gender = 'Male') AS avg_quantity_male,
+    (SELECT AVG(price) FROM personen WHERE gender = 'Male') AS avg_price_male,
+
+    -- Verteilung der Zahlungsmethoden nur für Männer
+    (SELECT COUNT(*) FROM personen WHERE gender = 'Male' AND payment_method = 'Credit Card') AS male_credit_card_count,
+    (SELECT COUNT(*) FROM personen WHERE gender = 'Male' AND payment_method = 'Cash') AS male_cash_count,
+    (SELECT COUNT(*) FROM personen WHERE gender = 'Male' AND payment_method = 'Debit Card') AS male_debit_card_count,
+
+    -- Verteilung der Produktkategorien nur für Männer
+    (SELECT COUNT(*) FROM personen WHERE gender = 'Male' AND category = 'Clothing') AS male_clothing_count,
+    (SELECT COUNT(*) FROM personen WHERE gender = 'Male' AND category = 'Technology') AS male_technology_count,
+    (SELECT COUNT(*) FROM personen WHERE gender = 'Male' AND category = 'Food &amp; Beverage') AS male_food_beverage_count,
+    (SELECT COUNT(*) FROM personen WHERE gender = 'Male' AND category = 'Shoes') AS male_shoes_count,
+    (SELECT COUNT(*) FROM personen WHERE gender = 'Male' AND category = 'Books') AS male_books_count,
+    (SELECT COUNT(*) FROM personen WHERE gender = 'Male' AND category = 'Cosmetics') AS male_cosmetics_count,
+    (SELECT COUNT(*) FROM personen WHERE gender = 'Male' AND category = 'Toys') AS male_toys_count,
+    (SELECT COUNT(*) FROM personen WHERE gender = 'Male' AND category = 'Souvenir') AS male_souvenir_count
+FROM
+    personen
+LIMIT 1;</sql><sql name="avg_female*">SELECT
+    -- Durchschnittswerte nur für Frauen
+    (SELECT AVG(age) FROM personen WHERE gender = 'Female') AS avg_age_female,
+    (SELECT AVG(quantity) FROM personen WHERE gender = 'Female') AS avg_quantity_female,
+    (SELECT AVG(price) FROM personen WHERE gender = 'Female') AS avg_price_female,
+
+    -- Verteilung der Zahlungsmethoden nur für Frauen
+    (SELECT COUNT(*) FROM personen WHERE gender = 'Female' AND payment_method = 'Credit Card') AS female_credit_card_count,
+    (SELECT COUNT(*) FROM personen WHERE gender = 'Female' AND payment_method = 'Cash') AS female_cash_count,
+    (SELECT COUNT(*) FROM personen WHERE gender = 'Female' AND payment_method = 'Debit Card') AS female_debit_card_count,
+
+    -- Verteilung der Produktkategorien nur für Frauen
+    (SELECT COUNT(*) FROM personen WHERE gender = 'Female' AND category = 'Clothing') AS female_clothing_count,
+    (SELECT COUNT(*) FROM personen WHERE gender = 'Female' AND category = 'Technology') AS female_technology_count,
+    (SELECT COUNT(*) FROM personen WHERE gender = 'Female' AND category = 'Food &amp; Beverage') AS female_food_beverage_count,
+    (SELECT COUNT(*) FROM personen WHERE gender = 'Female' AND category = 'Shoes') AS female_shoes_count,
+    (SELECT COUNT(*) FROM personen WHERE gender = 'Female' AND category = 'Books') AS female_books_count,
+    (SELECT COUNT(*) FROM personen WHERE gender = 'Female' AND category = 'Cosmetics') AS female_cosmetics_count,
+    (SELECT COUNT(*) FROM personen WHERE gender = 'Female' AND category = 'Toys') AS female_toys_count,
+    (SELECT COUNT(*) FROM personen WHERE gender = 'Female' AND category = 'Souvenir') AS female_souvenir_count
+FROM
+    personen
+LIMIT 1;</sql><sql name="old_person*">SELECT
+    -- Durchschnittswerte nur für Personen über 45
+    (SELECT AVG(age) FROM personen WHERE age &gt; 45) AS avg_age_over_45,
+    (SELECT AVG(quantity) FROM personen WHERE age &gt; 45) AS avg_quantity_over_45,
+    (SELECT AVG(price) FROM personen WHERE age &gt; 45) AS avg_price_over_45,
+
+    -- Verteilung der Zahlungsmethoden nur für Personen über 45
+    (SELECT COUNT(*) FROM personen WHERE age &gt; 45 AND payment_method = 'Credit Card') AS credit_card_count_over_45,
+    (SELECT COUNT(*) FROM personen WHERE age &gt; 45 AND payment_method = 'Cash') AS cash_count_over_45,
+    (SELECT COUNT(*) FROM personen WHERE age &gt; 45 AND payment_method = 'Debit Card') AS debit_card_count_over_45,
+
+    -- Verteilung der Produktkategorien nur für Personen über 45
+    (SELECT COUNT(*) FROM personen WHERE age &gt; 45 AND category = 'Clothing') AS clothing_count_over_45,
+    (SELECT COUNT(*) FROM personen WHERE age &gt; 45 AND category = 'Technology') AS technology_count_over_45,
+    (SELECT COUNT(*) FROM personen WHERE age &gt; 45 AND category = 'Food &amp; Beverage') AS food_beverage_count_over_45,
+    (SELECT COUNT(*) FROM personen WHERE age &gt; 45 AND category = 'Shoes') AS shoes_count_over_45,
+    (SELECT COUNT(*) FROM personen WHERE age &gt; 45 AND category = 'Books') AS books_count_over_45,
+    (SELECT COUNT(*) FROM personen WHERE age &gt; 45 AND category = 'Cosmetics') AS cosmetics_count_over_45,
+    (SELECT COUNT(*) FROM personen WHERE age &gt; 45 AND category = 'Toys') AS toys_count_over_45,
+    (SELECT COUNT(*) FROM personen WHERE age &gt; 45 AND category = 'Souvenir') AS souvenir_count_over_45
+FROM
+    personen
+LIMIT 1;</sql><sql name="young_person*">SELECT
+    -- Durchschnittswerte nur für Personen 45 oder jünger
+    (SELECT AVG(age) FROM personen WHERE age &lt;= 45) AS avg_age_under_45,
+    (SELECT AVG(quantity) FROM personen WHERE age &lt;= 45) AS avg_quantity_under_45,
+    (SELECT AVG(price) FROM personen WHERE age &lt;= 45) AS avg_price_under_45,
+
+    -- Verteilung der Zahlungsmethoden nur für Personen 45 oder jünger
+    (SELECT COUNT(*) FROM personen WHERE age &lt;= 45 AND payment_method = 'Credit Card') AS credit_card_count_under_45,
+    (SELECT COUNT(*) FROM personen WHERE age &lt;= 45 AND payment_method = 'Cash') AS cash_count_under_45,
+    (SELECT COUNT(*) FROM personen WHERE age &lt;= 45 AND payment_method = 'Debit Card') AS debit_card_count_under_45,
+
+    -- Verteilung der Produktkategorien nur für Personen 45 oder jünger
+    (SELECT COUNT(*) FROM personen WHERE age &lt;= 45 AND category = 'Clothing') AS clothing_count_under_45,
+    (SELECT COUNT(*) FROM personen WHERE age &lt;= 45 AND category = 'Technology') AS technology_count_under_45,
+    (SELECT COUNT(*) FROM personen WHERE age &lt;= 45 AND category = 'Food &amp; Beverage') AS food_beverage_count_under_45,
+    (SELECT COUNT(*) FROM personen WHERE age &lt;= 45 AND category = 'Shoes') AS shoes_count_under_45,
+    (SELECT COUNT(*) FROM personen WHERE age &lt;= 45 AND category = 'Books') AS books_count_under_45,
+    (SELECT COUNT(*) FROM personen WHERE age &lt;= 45 AND category = 'Cosmetics') AS cosmetics_count_under_45,
+    (SELECT COUNT(*) FROM personen WHERE age &lt;= 45 AND category = 'Toys') AS toys_count_under_45,
+    (SELECT COUNT(*) FROM personen WHERE age &lt;= 45 AND category = 'Souvenir') AS souvenir_count_under_45
+FROM
+    personen
+LIMIT 1;</sql><sql name="most_revenue*">SELECT
+    gender,
+    CASE
+        WHEN age &lt;= 45 THEN '45 or younger'
+        WHEN age &gt; 45 THEN 'over 45'
+        ELSE 'nothing'
+    END AS age_group,
+    SUM(price) AS total_revenue
+FROM
+    personen
+GROUP BY
+    gender, age_group
+ORDER BY
+    total_revenue DESC;</sql><sql name="avg_basket_value*">SELECT
+	AVG(price)*AVG(quantity) AS average_basket_value 
+FROM
+	personen
+</sql><sql name="old_category*">SELECT
+    category,
+    COUNT(*) AS anzahl
+FROM
+    personen
+WHERE
+    age &gt; 45
+GROUP BY
+    category
+ORDER BY
+    anzahl DESC
+LIMIT 1;</sql><sql name="shoppingcenter_highest_revenue*">SELECT
+	shopping_mall,
+	sum(price * quantity) AS Revenue
+FROM
+	personen
+GROUP BY
+	shopping_mall
+ORDER BY
+	Revenue DESC
+LIMIT 3;</sql><sql name="Avg_purchase_number*">SELECT
+    AVG(purchase_count) AS average_purchases_per_customer
+FROM (
+    SELECT
+        customer_id,
+        COUNT(invoice_no) AS purchase_count
+    FROM
+        personen
+    GROUP BY
+        customer_id
+);</sql><current_tab id="9"/></tab_sql></sqlb_project>
