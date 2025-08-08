@@ -4,12 +4,6 @@ Exploring customer shopping behavior in Istanbul to identify patterns in demogra
 
 ---
 
-## Project Title & Short Description
-**Istanbul Retail Trends — Customer Behavior Analysis**  
-One-sentence summary: *Exploring customer shopping behavior (age, gender, category, payment method, quantity, price) to identify patterns and relationships that explain purchasing habits.*
-
----
-
 ## 📊 Dataset Description
 - **Source:** place your CSV in `data/istanbul_sales_data.csv` (or add a public link here if available).  
 - **Typical shape:** ~3k rows × 7 columns (please replace with the actual numbers from your data).  
